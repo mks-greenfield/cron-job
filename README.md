@@ -28,7 +28,7 @@ This is currently a scheduled cron job on my local machine set to run once a day
 }
 ```
 
-- Upon completion, the job then sends me an email to notify that it's done.
+- Upon completion, it sends me an email to notify that it's done with the corresponding job statistics and any error logs.
 
 #### Usage
 
