@@ -39,6 +39,18 @@ This is currently a scheduled cron job on my local machine set to run once a day
 
 - `git clone https://github.com/mks-greenfield/cron-job.git`
 - `npm install`
+- Need to add the following environment vars:
+
+```
+CONSUMER_KEY='Twitter-CONSUMER-KEY'
+CONSUMER_SECRET='Twitter-CONSUMER-SECRET'
+ACCESS_TOKEN_KEY='Twitter-API-KEY'
+ACCESS_TOKEN_SECRET='Twitter-API-SECRET'
+MONGOLAB_URI='mongodb://<dbuser>:<dbpassword>@ds035503.mongolab.com:35503/db-name'
+USER_PWD='gmail_pwd'
+USER_EMAIL='address@gmail.com'
+```
+
 - Edit cron job `env EDITOR=nano crontab -e`
 - Add cron job to run this file: `/Users/path/to/cron-job/cron_js.js`
 - List active cron jobs `crontab -l`
