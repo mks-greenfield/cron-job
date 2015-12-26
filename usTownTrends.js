@@ -67,7 +67,7 @@ exports.processTownQueue = function(queue, callback) {
     } else {
       clearInterval(throttle);
       if (callback) {
-        callback(statistics);
+        callback();
       }
       //console.log("DONE WITH THROTTLING");
     }
