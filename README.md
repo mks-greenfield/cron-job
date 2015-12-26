@@ -79,3 +79,9 @@ Once every three hours.
 ```
 1 */3 * * * /usr/local/bin/node /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/cron.js >> /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/app/debug.log 2>&1
 ```
+
+### Resources
+
+- Yahoo WOEID API: https://developer.yahoo.com/geo/geoplanet/guide/api-reference.html#api-place
+- http://where.yahooapis.com/v1/place/2352824?format=json&appid=dj0yJmk9OW15eEVuajVDdVZOJmQ9WVdrOVQzb3hUVEp5TXpnbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD03Ng--
+
