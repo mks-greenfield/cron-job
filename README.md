@@ -1,12 +1,6 @@
 ### Cron Job
 
-This is currently a scheduled cron job on my local machine set to run once a day:
-
-```
-*/1 * * * * /usr/local/bin/node /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/cron.js >> /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/debug.log 2>&1
-```
-
-node cron.js >> debug.log 2>&1
+This is currently a scheduled cron job on my local machine set to run once a day.
 
 #### What it does
 
@@ -69,3 +63,19 @@ USER_EMAIL='address@gmail.com'
 #### Resources
 
 - Cron time checker: http://crontab.guru/
+
+#### Debugging
+
+node cron.js >> debug.log 2>&1
+
+Once a minute.
+
+```
+*/1 * * * * /usr/local/bin/node /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/cron.js >> /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/app/debug.log 2>&1
+```
+
+Once every three hours.
+
+```
+1 */3 * * * /usr/local/bin/node /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/cron.js >> /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/app/debug.log 2>&1
+```

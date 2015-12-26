@@ -13,3 +13,18 @@ We've opened a connection
 DONE WITH THROTTLING
 DONE Los Angeles
 Message sent: 250 2.0.0 OK 1451111680 p4sm6293240vke.7 - gsmtp
+START Louisville
+DONE WITH THROTTLING
+We've opened a connection
+DONE Louisville
+Message sent: 250 2.0.0 OK 1451112002 p4sm6294756vke.7 - gsmtp
+We've opened a connection
+START Louisville
+DONE WITH THROTTLING
+DONE Louisville
+Message sent: 250 2.0.0 OK 1451112062 g82sm6263425vkf.27 - gsmtp
+START Louisville
+We've opened a connection
+DONE WITH THROTTLING
+DONE Louisville
+Message sent: 250 2.0.0 OK 1451112122 b131sm6154053vkf.10 - gsmtp
