@@ -4,11 +4,12 @@ Scheduled cron job set to run once a day on an EC2 instance.
 
 ```
 0 23 * * *  /usr/local/bin/node /home/ec2-user/cron-job/cron.js >> /home/ec2-user/cron-job/app/debug.log 2>&1
-``
+```
 
 #### What it does
 
 - Pings `GET trends/available` and returns all available towns in the United States that have trending topics and adds them to a queue. 
+- Pings Yahoo GEO API to append state information to towns.
 - Pings `GET trends/place` for each of the available towns in the queue, limiting the call to one town every 2 minutes to accomodate Twitter's rate limiting. Processing everything in the queue takes around 2 hours.
 - Saves each trending topic (up to 50 per town) to a MongoDB stored on Mongolabs with the following information:
 
@@ -67,28 +68,27 @@ yahooAPPID='yahoo client ID (consumer key)'
 
 #### Resources
 
+- Guide I wrote: https://github.com/mks-greenfield/planning/wiki/Running-a-cron-job-on-EC2
 - Cron time checker: http://crontab.guru/
+- Yahoo WOEID API: https://developer.yahoo.com/geo/geoplanet/guide/api-reference.html#api-place
 
 #### Debugging
 
+```
 node cron.js >> app/debug.log 2>&1
+```
 
 Once a minute.
 
 ```
 */1 * * * * /usr/local/bin/node /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/cron.js >> /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/app/debug.log 2>&1
-```
 
 */1 * * * * /usr/local/bin/node /home/ec2-user/cron-job/cron.js >> /home/ec2-user/cron-job/app/debug.log 2>&1
-
+```
 
 Once every three hours.
 
 ```
 1 */3 * * * /usr/local/bin/node /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/cron.js >> /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/app/debug.log 2>&1
 ```
-
-### Resources
-
-- Yahoo WOEID API: https://developer.yahoo.com/geo/geoplanet/guide/api-reference.html#api-place
 
