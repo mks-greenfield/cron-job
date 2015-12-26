@@ -1,10 +1,10 @@
 var config = require('../config'); //loads .env vars
-var _ = require('underscore');
 var http = require("http");
+var async = require('async');
 
 /*************************************************************
-Uses Yahoo GEO API to pull State info for a WOEID
-http://where.yahooapis.com/v1/place/2352824?format=json&appid=dj0yJmk9OW15eEVuajVDdVZOJmQ9WVdrOVQzb3hUVEp5TXpnbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD03Ng--
+Uses Yahoo GEO API to pull State info using a WOEID
+of a US town
 **************************************************************/
 
 var getStateData = function(woeid, callback) {
@@ -38,5 +38,31 @@ var getStateData = function(woeid, callback) {
   req.end();
 }
 
-getStateData(2352824);
+/*************************************************************
+Append state information to array of towns
+**************************************************************/
+
+exports.addStateData = function(towns, callback) {
+
+  async.each(towns, function(item, next) {
+
+    console.log('Processing town ' + item);
+
+    getStateData(item.woeid, function(state) {
+      item['state'] = state;
+      console.log("item",item);
+      next();
+    });
+
+  }, function(error){
+      if(error) {
+        console.log('A town failed to process');
+      } else {
+        console.log('All towns have been processed successfully');
+        if (callback) {
+          callback(towns);
+        }
+      }
+  });
+}
 

@@ -62,14 +62,14 @@ Calls fetchTownTrends on each town.
 
 exports.processTownQueue = function(queue, callback) {
   //for debugging
-  console.log("Date:", moment(new Date()).format("dddd, MMMM Do YYYY, h:mm:ss a"));
+  console.log("Date: (UTC)", moment(new Date()).format("dddd, MMMM Do YYYY, h:mm:ss a"));
   console.log("Available towns:",queue.length);
   console.log("Found following trends for:");
 
   var throttle = setInterval(function() {
     if (queue.length) {
       var town = queue.pop();
-      fetchTownTrends(town.name, town.woeid);
+      fetchTownTrends(town.name, town.state, town.woeid);
     } else {
       clearInterval(throttle);
       if (callback) {
@@ -86,7 +86,7 @@ Saves up to 50 trends to MongoDB for a
 specific US town.
 **************************************************************/
 
-function fetchTownTrends(townName, townWOEID) {
+function fetchTownTrends(townName, townState, townWOEID) {
   var params = {id: townWOEID};
   // console.log("START",townName);
 
@@ -99,7 +99,8 @@ function fetchTownTrends(townName, townWOEID) {
       }
 
     } else {
-      console.log(townName,result[0].trends.length);
+      
+      console.log(townName,",",townState,result[0].trends.length);
 
       _.each(result[0].trends, function(item) {
         //console.log(JSON.stringify(item));
@@ -108,6 +109,7 @@ function fetchTownTrends(townName, townWOEID) {
           trend_name: item.name,
           tweet_volume: item.tweet_volume,
           location_name: townName,
+          state: townState,
           woeid: townWOEID,
           url: item.url,
           created_at: result[0].created_at,

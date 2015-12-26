@@ -1,6 +1,10 @@
 ### Cron Job
 
-This is currently a scheduled cron job on my local machine set to run once a day.
+Scheduled cron job set to run once a day on an EC2 instance.
+
+```
+0 23 * * *  /usr/local/bin/node /home/ec2-user/cron-job/cron.js >> /home/ec2-user/cron-job/app/debug.log 2>&1
+``
 
 #### What it does
 
@@ -74,6 +78,9 @@ Once a minute.
 ```
 */1 * * * * /usr/local/bin/node /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/cron.js >> /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/app/debug.log 2>&1
 ```
+
+*/1 * * * * /usr/local/bin/node /home/ec2-user/cron-job/cron.js >> /home/ec2-user/cron-job/app/debug.log 2>&1
+
 
 Once every three hours.
 

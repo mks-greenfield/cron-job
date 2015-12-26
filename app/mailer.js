@@ -24,7 +24,7 @@ var mailOptions = {
     attachments: [
     {   // filename and content type is derived from path
       //this path is for EC2
-      path: '/Users/psoshnin/Desktop/makersquare/greenfield/cron-job/app/debug.log'
+      path: '/home/ec2-user/cron-job/app/debug.log'
     }]
 };
 
