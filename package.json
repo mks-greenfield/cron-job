@@ -9,9 +9,10 @@
   "author": "Polina Soshnin",
   "license": "MIT",
   "dependencies": {
-    "cron": "1.1.0",
     "dotenv": "1.2.0",
+    "fs": "0.0.2",
     "mongoose": "4.3.3",
+    "nodemailer": "1.10.0",
     "twitter": "1.2.5",
     "underscore": "1.8.3"
   }

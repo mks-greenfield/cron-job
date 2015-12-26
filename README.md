@@ -1,5 +1,44 @@
 ### Cron Job
 
-- `npm install cron --save`
-- Cron [documentation](https://github.com/ncb000gt/node-cron)
+This is currently a scheduled cron job on my local machine set to run once a day:
+
+
+```
+30 18 * * * /usr/local/bin/node /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/cron_js.js
+```
+
+### What it does
+
+- Pings `GET trends/available` and returns all available towns in the United States that have trending topics and adds them to a queue. 
+- Pings `GET trends/place` for each of the available towns in the queue, limiting the call to one town every 2 minutes to accomodate Twitter's rate limiting. Processing everything in the queue takes around 2 hours.
+- Saves each trending topic (up to 50 per town) to a MongoDB stored on Mongolabs with the following information:
+
+```
+{
+    "_id": {
+        "$oid": "567c6fa6a28d95771fe274ad"
+    },
+    "trend_name": "#ChristmasEve",
+    "tweet_volume": 261740,
+    "location_name": "Austin",
+    "woeid": 2357536,
+    "url": "http://twitter.com/search?q=%23ChristmasEve",
+    "created_at": {
+        "$date": "2015-12-24T22:14:13.000Z"
+    },
+    "updated_at": {
+        "$date": "2015-12-24T22:20:22.839Z"
+    },
+    "__v": 0
+}
+```
+
+- Upon completion, the job then sends me an email to notify that it's done.
+
+#### Usage
+
+- Edit cron job `env EDITOR=nano crontab -e`
+- List active cron jobs `crontab -l`
+
+
 

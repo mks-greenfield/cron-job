@@ -1,60 +1,41 @@
 require('dotenv').load(); //loads .env vars
-var cron = require('cron');
-var twitter = require('twitter');
+var nodemailer = require('nodemailer');
+var usTowns = require('./usTownTrends');
 
-/*************************************************************
-Twitter Config
-All of these process variables live in .env
-**************************************************************/
-
-var client = new twitter({
-  consumer_key: process.env.CONSUMER_KEY,
-  consumer_secret: process.env.CONSUMER_SECRET,
-  access_token_key: process.env.ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET
+// create reusable transporter object using SMTP transport
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: process.env.USER_EMAIL,
+        pass: process.env.USER_PWD
+    }
 });
 
-/*************************************************************
-GET trends/place
-Top 50 hashtags for a specific region
-- tweet volume for the last 24 hours with the specific trend
-**************************************************************/
-//san francisco
-var params = {id: 24865672};
+// setup e-mail data
+var mailOptions = {
+    from: process.env.USER_EMAIL, // sender address
+    to: process.env.USER_EMAIL,  // list of receivers
+    subject: '✔ Daily Cron Job Finished', // Subject line
+    text: 'THIS IS THE FIRST TEST RUN!' // plaintext body
+    // html: '<b>Hello world </b>' // html body
+};
 
-client.get('trends/place', function(error, tweets, response){
-  if (error) {
-    console.log(error);
-  }
-  var results = JSON.stringify(tweets);
+// send mail with defined transport object
+usTowns.getAvailableUSTowns(function(result) {
+  // var towns = [];
 
-  console.log(tweets.length);
+  // towns.push(result[6]);
+  // towns.push(result[7]);
+  // towns.push(result[8]);
+
+  usTowns.processTownQueue(result, function() {
+
+    transporter.sendMail(mailOptions, function(error, info) {
+        if(error) {
+            return console.log(error);
+        }
+        // console.log('Message sent: ' + info.response);
+    });
+  });
 });
 
-/*************************************************************
-Twitter error response:
-[ { code: 34, message: 'Sorry, that page does not exist.' } ]
-{"errors":[{"code":34,"message":"Sorry, that page does not exist."}]}
-**************************************************************/
-
-
-/************************************************************
-Cron Job
-
-15 times every 30 min, 
-467 woeids available
-*************************************************************/
-
-var CronJob = require('cron').CronJob;
-var job = new CronJob('00 30 11 * * 1-5', function() {
-  /*
-   * Runs every weekday (Monday through Friday)
-   * at 11:30:00 AM. It does not run on Saturday
-   * or Sunday.
-   */
-  }, function () {
-    /* This function is executed when the job stops */
-  },
-  true, /* Start the job right now */
-  timeZone /* Time zone of this job. */
-);
