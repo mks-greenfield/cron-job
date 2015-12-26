@@ -2,6 +2,10 @@ require('dotenv').load(); //loads .env vars
 var nodemailer = require('nodemailer');
 var usTowns = require('./usTownTrends');
 
+/*************************************************************
+Emailer
+**************************************************************/
+
 // create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -17,16 +21,14 @@ var mailOptions = {
     to: process.env.USER_EMAIL,  // list of receivers
     subject: '✔ Daily Cron Job Finished', // Subject line
     text: 'THIS IS THE FIRST TEST RUN!' // plaintext body
-    // html: '<b>Hello world </b>' // html body
 };
 
-// send mail with defined transport object
-usTowns.getAvailableUSTowns(function(result) {
-  // var towns = [];
+/*************************************************************
+Gets available US towns and saves the 
+current trends for those towns
+**************************************************************/
 
-  // towns.push(result[6]);
-  // towns.push(result[7]);
-  // towns.push(result[8]);
+usTowns.getAvailableUSTowns(function(result) {
 
   usTowns.processTownQueue(result, function() {
 
@@ -34,7 +36,6 @@ usTowns.getAvailableUSTowns(function(result) {
         if(error) {
             return console.log(error);
         }
-        // console.log('Message sent: ' + info.response);
     });
   });
 });

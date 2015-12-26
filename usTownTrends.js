@@ -26,13 +26,11 @@ exports.getAvailableUSTowns = function(callback) {
   client.get('trends/available', function(err, result, response){
     if (err) {
       console.log(err);
-      //handle case where Twitter returns a 404
       if (err[0].code === 34) {
         console.log("404 Trend availability data Not Found\n");
       }
 
     } else {
-      //console.log(JSON.stringify(result));
       var us_woeids = [];
 
       _.each(result, function(item) {
@@ -42,7 +40,6 @@ exports.getAvailableUSTowns = function(callback) {
           us_woeids.push(item);
         }
       });
-      //console.log(us_woeids.length);
 
       if(callback) {
         callback(us_woeids);
@@ -74,7 +71,6 @@ exports.processTownQueue = function(queue, callback) {
   },120000); //120000 = 2 minutes
 }
 
-
 /*************************************************************
 GET trends/place
 Saves up to 50 trends to MongoDB for a 
@@ -88,15 +84,13 @@ function fetchTownTrends(townName, townWOEID) {
   client.get('trends/place', params, function(err, result, response){
     if (err) {
       console.log(err);
-      //handle case where Twitter returns a 404
+
       if (err[0].code === 34) {
         console.log("404 Town Trend Data Not Found\n");
       }
 
     } else {
       
-      //console.log(JSON.stringify(result));
-
       _.each(result[0].trends, function(item) {
         //console.log(JSON.stringify(item));
 
@@ -112,14 +106,9 @@ function fetchTownTrends(townName, townWOEID) {
 
         usTownTrend(trend).save(function(err) {
           if (err) throw err;
-          //console.log("entry saved");
-          //console.log("item", item);
         });
       });
-      //var results = JSON.stringify(tweets);
     }
     console.log("DONE",townName);
   });
 }
-
-//fetchTownTrends("San Francisco", 2487956);
