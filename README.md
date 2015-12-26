@@ -55,6 +55,12 @@ USER_EMAIL='address@gmail.com'
 - Add cron job to run this file: `/Users/path/to/cron-job/cron_js.js`
 - List active cron jobs `crontab -l`
 
+#### Using Nodemailer to send email
+
+- Gmail by default may block you from sending email with Node.
+- To unblock, you may need to [“Allow Less Secure Apps”](https://www.google.com/settings/security/lesssecureapps) in your Gmail account.
+- You also may need to [“Allow access to your Google account”](https://accounts.google.com/DisplayUnlockCaptcha).
+
 #### Resources
 
 - Cron time checker: http://crontab.guru/
