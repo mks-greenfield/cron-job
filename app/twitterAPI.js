@@ -1,7 +1,7 @@
-var config = require('./config'); //loads .env vars
+var config = require('../config'); //loads .env vars
 var _ = require('underscore');
 var twitter = require('twitter'); //Twitter API Client
-var usTownTrend = require('./db/models/usTownTrend'); //MongoDB
+var usTownTrend = require('../db/models/usTownTrend'); //MongoDB
 
 /*************************************************************
 Twitter Config

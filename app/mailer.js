@@ -1,4 +1,4 @@
-var config = require('./config'); //loads .env vars
+var config = require('../config'); //loads .env vars
 var nodemailer = require('nodemailer');
 var fs = require('fs');
 
@@ -23,7 +23,7 @@ var mailOptions = {
     text: 'See attached log for statistics and error messages.', // plaintext body
     attachments: [
     {   // filename and content type is derived from path
-      path: '/Users/psoshnin/Desktop/makersquare/greenfield/cron-job/debug.log'
+      path: '/Users/psoshnin/Desktop/makersquare/greenfield/cron-job/app/debug.log'
     }]
 };
 

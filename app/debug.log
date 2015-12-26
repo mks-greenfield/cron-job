@@ -8,3 +8,8 @@ DONE WITH THROTTLING
 We've opened a connection
 DONE Las Vegas
 Message sent: 250 2.0.0 OK 1451110950 v136sm3415792vke.15 - gsmtp
+START Los Angeles
+We've opened a connection
+DONE WITH THROTTLING
+DONE Los Angeles
+Message sent: 250 2.0.0 OK 1451111680 p4sm6293240vke.7 - gsmtp

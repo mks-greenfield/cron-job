@@ -1,5 +1,5 @@
-var twitterAPI = require('./twitterAPI');
-var mailer = require('./mailer');
+var twitterAPI = require('./app/twitterAPI');
+var mailer = require('./app/mailer');
 
 /*************************************************************
 Gets available US towns and saves the 
@@ -10,7 +10,7 @@ twitterAPI.getAvailableUSTowns(function(result) {
 
   var towns = [];
 
-  towns.push(result[27]);
+  towns.push(result[29]);
 
   twitterAPI.processTownQueue(towns, function() {
     //send email when done
