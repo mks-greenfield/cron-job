@@ -69,10 +69,3 @@ USER_EMAIL='address@gmail.com'
 #### Resources
 
 - Cron time checker: http://crontab.guru/
-
-
-
-
-
-
-

@@ -35,8 +35,3 @@ exports.sendMail = function() {
       console.log('Message sent: ' + info.response);
   });
 }
-
-// function() {
-//       fs.writeFile('/Users/psoshnin/Desktop/makersquare/greenfield/cron-job/debug.log','');
-//     }
-

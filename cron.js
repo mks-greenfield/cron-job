@@ -17,4 +17,3 @@ twitterAPI.getAvailableUSTowns(function(result) {
     mailer.sendMail();
   });
 });
-
