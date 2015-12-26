@@ -2,10 +2,11 @@
 
 This is currently a scheduled cron job on my local machine set to run once a day:
 
+```
+*/1 * * * * /usr/local/bin/node /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/cron.js >> /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/debug.log 2>&1
+```
 
-```
-30 18 * * * /usr/local/bin/node /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/cron_js.js
-```
+node cron.js >> debug.log 2>&1
 
 #### What it does
 
@@ -39,7 +40,7 @@ This is currently a scheduled cron job on my local machine set to run once a day
 
 - `git clone https://github.com/mks-greenfield/cron-job.git`
 - `npm install`
-- Create `.env` in root directory and add the following:
+- Create `config.js` in root directory and add the following:
 
 ```
 CONSUMER_KEY='Twitter-CONSUMER-KEY'
@@ -61,9 +62,16 @@ USER_EMAIL='address@gmail.com'
 - To unblock, you may need to [“Allow Less Secure Apps”](https://www.google.com/settings/security/lesssecureapps) in your Gmail account.
 - You also may need to [“Allow access to your Google account”](https://accounts.google.com/DisplayUnlockCaptcha).
 
+#### Environment variables and cron jobs
+
+- Currently, cron jobs don't seem to like `process.env` variables. I haven't figured out a way to use those.
+
 #### Resources
 
 - Cron time checker: http://crontab.guru/
+
+
+
 
 
 

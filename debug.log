@@ -1,0 +1,10 @@
+START Kansas City
+We've opened a connection
+DONE WITH THROTTLING
+DONE Kansas City
+Message sent: 250 2.0.0 OK 1451110416 u206sm6236401vke.11 - gsmtp
+START Las Vegas
+DONE WITH THROTTLING
+We've opened a connection
+DONE Las Vegas
+Message sent: 250 2.0.0 OK 1451110950 v136sm3415792vke.15 - gsmtp

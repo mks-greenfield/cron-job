@@ -9,6 +9,7 @@
   "author": "Polina Soshnin",
   "license": "MIT",
   "dependencies": {
+    "del": "2.2.0",
     "dotenv": "1.2.0",
     "fs": "0.0.2",
     "mongoose": "4.3.3",

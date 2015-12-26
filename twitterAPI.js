@@ -1,8 +1,7 @@
-require('dotenv').load(); //loads .env vars
-var cron = require('cron');
-var twitter = require('twitter');
+var config = require('./config'); //loads .env vars
 var _ = require('underscore');
-var usTownTrend = require('./db/models/usTownTrend');
+var twitter = require('twitter'); //Twitter API Client
+var usTownTrend = require('./db/models/usTownTrend'); //MongoDB
 
 /*************************************************************
 Twitter Config
@@ -10,12 +9,16 @@ All of these process variables live in .env
 **************************************************************/
 
 var client = new twitter({
-  consumer_key: process.env.CONSUMER_KEY,
-  consumer_secret: process.env.CONSUMER_SECRET,
-  access_token_key: process.env.ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET
+  consumer_key: config.CONSUMER_KEY,
+  consumer_secret: config.CONSUMER_SECRET,
+  access_token_key: config.ACCESS_TOKEN_KEY,
+  access_token_secret: config.ACCESS_TOKEN_SECRET
 });
 
+// console.log("env1",config.CONSUMER_KEY);
+// console.log("env2",config.CONSUMER_SECRET);
+// console.log("env3",config.ACCESS_TOKEN_KEY);
+// console.log("env4",config.ACCESS_TOKEN_SECRET);
 /*************************************************************
 GET trends/available
 Gets available towns that have trends in the United States
@@ -25,7 +28,7 @@ Returns an array of Towns with WOEIDs
 exports.getAvailableUSTowns = function(callback) {
   client.get('trends/available', function(err, result, response){
     if (err) {
-      console.log(err);
+      console.log("trends available error",err);
       if (err[0].code === 34) {
         console.log("404 Trend availability data Not Found\n");
       }
@@ -66,9 +69,9 @@ exports.processTownQueue = function(queue, callback) {
       if (callback) {
         callback();
       }
-      //console.log("DONE WITH THROTTLING");
+      console.log("DONE WITH THROTTLING");
     }
-  },120000); //120000 = 2 minutes
+  },120); //120000 = 2 minutes
 }
 
 /*************************************************************
@@ -83,7 +86,7 @@ function fetchTownTrends(townName, townWOEID) {
 
   client.get('trends/place', params, function(err, result, response){
     if (err) {
-      console.log(err);
+      console.log("trends place error",err);
 
       if (err[0].code === 34) {
         console.log("404 Town Trend Data Not Found\n");
