@@ -7,7 +7,7 @@ This is currently a scheduled cron job on my local machine set to run once a day
 30 18 * * * /usr/local/bin/node /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/cron_js.js
 ```
 
-### What it does
+#### What it does
 
 - Pings `GET trends/available` and returns all available towns in the United States that have trending topics and adds them to a queue. 
 - Pings `GET trends/place` for each of the available towns in the queue, limiting the call to one town every 2 minutes to accomodate Twitter's rate limiting. Processing everything in the queue takes around 2 hours.
@@ -42,6 +42,11 @@ This is currently a scheduled cron job on my local machine set to run once a day
 - Edit cron job `env EDITOR=nano crontab -e`
 - Add cron job to run this file: `/Users/path/to/cron-job/cron_js.js`
 - List active cron jobs `crontab -l`
+
+#### Resources
+
+- Cron time checker: http://crontab.guru/
+
 
 
 
