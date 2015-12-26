@@ -39,7 +39,7 @@ This is currently a scheduled cron job on my local machine set to run once a day
 
 - `git clone https://github.com/mks-greenfield/cron-job.git`
 - `npm install`
-- Need to add the following environment vars:
+- Create `.env` in root directory and add the following:
 
 ```
 CONSUMER_KEY='Twitter-CONSUMER-KEY'
