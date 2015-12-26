@@ -37,7 +37,10 @@ This is currently a scheduled cron job on my local machine set to run once a day
 
 #### Usage
 
+- `git clone https://github.com/mks-greenfield/cron-job.git`
+- `npm install`
 - Edit cron job `env EDITOR=nano crontab -e`
+- Add cron job to run this file: `/Users/path/to/cron-job/cron_js.js`
 - List active cron jobs `crontab -l`
 
 
