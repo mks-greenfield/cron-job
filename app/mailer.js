@@ -23,6 +23,7 @@ var mailOptions = {
     text: 'See attached log for statistics and error messages.', // plaintext body
     attachments: [
     {   // filename and content type is derived from path
+      //this path is for EC2
       path: '/Users/psoshnin/Desktop/makersquare/greenfield/cron-job/app/debug.log'
     }]
 };

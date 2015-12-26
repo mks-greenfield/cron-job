@@ -44,6 +44,7 @@ ACCESS_TOKEN_SECRET='Twitter-API-SECRET'
 MONGOLAB_URI='mongodb://<dbuser>:<dbpassword>@ds035503.mongolab.com:35503/db-name'
 USER_PWD='gmail_pwd'
 USER_EMAIL='address@gmail.com'
+yahooAPPID='yahoo client ID (consumer key)'
 ```
 
 - Edit cron job `env EDITOR=nano crontab -e`
@@ -83,5 +84,4 @@ Once every three hours.
 ### Resources
 
 - Yahoo WOEID API: https://developer.yahoo.com/geo/geoplanet/guide/api-reference.html#api-place
-- http://where.yahooapis.com/v1/place/2352824?format=json&appid=dj0yJmk9OW15eEVuajVDdVZOJmQ9WVdrOVQzb3hUVEp5TXpnbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD03Ng--
 
