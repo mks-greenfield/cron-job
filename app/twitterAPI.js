@@ -2,6 +2,7 @@ var config = require('../config'); //loads .env vars
 var _ = require('underscore');
 var twitter = require('twitter'); //Twitter API Client
 var usTownTrend = require('../db/models/usTownTrend'); //MongoDB
+var moment = require('moment');
 
 /*************************************************************
 Twitter Config
@@ -60,6 +61,11 @@ Calls fetchTownTrends on each town.
 **************************************************************/
 
 exports.processTownQueue = function(queue, callback) {
+  //for debugging
+  console.log("Date:", moment(new Date()).format("dddd, MMMM Do YYYY, h:mm:ss a"));
+  console.log("Available towns:",queue.length);
+  console.log("Found following trends for:");
+
   var throttle = setInterval(function() {
     if (queue.length) {
       var town = queue.pop();
@@ -69,7 +75,7 @@ exports.processTownQueue = function(queue, callback) {
       if (callback) {
         callback();
       }
-      console.log("DONE WITH THROTTLING");
+      // console.log("DONE WITH THROTTLING");
     }
   },120); //120000 = 2 minutes
 }
@@ -82,7 +88,7 @@ specific US town.
 
 function fetchTownTrends(townName, townWOEID) {
   var params = {id: townWOEID};
-  console.log("START",townName);
+  // console.log("START",townName);
 
   client.get('trends/place', params, function(err, result, response){
     if (err) {
@@ -93,7 +99,8 @@ function fetchTownTrends(townName, townWOEID) {
       }
 
     } else {
-      
+      console.log(townName,result[0].trends.length);
+
       _.each(result[0].trends, function(item) {
         //console.log(JSON.stringify(item));
 
@@ -112,6 +119,6 @@ function fetchTownTrends(townName, townWOEID) {
         });
       });
     }
-    console.log("DONE",townName);
+    // console.log("DONE",townName);
   });
 }

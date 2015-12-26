@@ -66,7 +66,7 @@ USER_EMAIL='address@gmail.com'
 
 #### Debugging
 
-node cron.js >> debug.log 2>&1
+node cron.js >> app/debug.log 2>&1
 
 Once a minute.
 

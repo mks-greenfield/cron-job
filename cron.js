@@ -10,7 +10,8 @@ twitterAPI.getAvailableUSTowns(function(result) {
 
   var towns = [];
 
-  towns.push(result[29]);
+  towns.push(result[46]);
+  towns.push(result[47]);
 
   twitterAPI.processTownQueue(towns, function() {
     //send email when done
