@@ -21,6 +21,7 @@ Scheduled cron job set to run once a day on an EC2 instance.
     "trend_name": "#ChristmasEve",
     "tweet_volume": 261740,
     "location_name": "Austin",
+    "state":"Texas",
     "woeid": 2357536,
     "url": "http://twitter.com/search?q=%23ChristmasEve",
     "created_at": {
@@ -68,9 +69,11 @@ yahooAPPID='yahoo client ID (consumer key)'
 
 #### Resources
 
-- Guide I wrote: https://github.com/mks-greenfield/planning/wiki/Running-a-cron-job-on-EC2
+- Guide I wrote for working with EC2: https://github.com/mks-greenfield/planning/wiki/Running-a-cron-job-on-EC2
 - Cron time checker: http://crontab.guru/
+- Twitter `GET trends/available`: https://dev.twitter.com/rest/reference/get/trends/available
 - Yahoo WOEID API: https://developer.yahoo.com/geo/geoplanet/guide/api-reference.html#api-place
+- Twitter `GET trends/place`: https://dev.twitter.com/rest/reference/get/trends/place
 
 #### Debugging
 

@@ -77,7 +77,7 @@ exports.processTownQueue = function(queue, callback) {
       }
       // console.log("DONE WITH THROTTLING");
     }
-  },120); //120000 = 2 minutes
+  },120000); //120000 = 2 minutes
 }
 
 /*************************************************************
