@@ -1,9 +1,9 @@
 ### Cron Job
 
-Scheduled cron job set to run once a day on an EC2 instance.
+Scheduled cron job set to run once every three hours on an EC2 instance.
 
 ```
-0 23 * * *  /usr/local/bin/node /home/ec2-user/cron-job/cron.js >> /home/ec2-user/cron-job/app/debug.log 2>&1
+1 */3 * * *  /usr/local/bin/node /home/ec2-user/cron-job/cron.js >> /home/ec2-user/cron-job/app/debug.log 2>&1
 ```
 
 #### What it does
