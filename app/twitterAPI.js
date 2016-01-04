@@ -16,10 +16,6 @@ var client = new twitter({
   access_token_secret: config.ACCESS_TOKEN_SECRET
 });
 
-// console.log("env1",config.CONSUMER_KEY);
-// console.log("env2",config.CONSUMER_SECRET);
-// console.log("env3",config.ACCESS_TOKEN_KEY);
-// console.log("env4",config.ACCESS_TOKEN_SECRET);
 /*************************************************************
 GET trends/available
 Gets available towns that have trends in the United States
