@@ -88,10 +88,3 @@ Once a minute.
 
 */1 * * * * /usr/local/bin/node /home/ec2-user/cron-job/cron.js >> /home/ec2-user/cron-job/app/debug.log 2>&1
 ```
-
-Once every three hours.
-
-```
-1 */3 * * * /usr/local/bin/node /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/cron.js >> /Users/psoshnin/Desktop/makersquare/greenfield/cron-job/app/debug.log 2>&1
-```
-
